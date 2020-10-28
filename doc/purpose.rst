@@ -3,10 +3,10 @@
 Purpose
 =======
 
-Write me ...
+Literally just to learn a bunch of stuff.
 
 
 Zipf's law
 ----------
 
-Write me ...
+Like, we don't even touch upon Pifz's law.

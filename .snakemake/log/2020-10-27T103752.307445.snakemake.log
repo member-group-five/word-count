@@ -1,0 +1,65 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	all
+	1	count_words
+	1	make_archive
+	1	make_plot
+	1	zipf_test
+	5
+
+[Tue Oct 27 10:37:52 2020]
+rule count_words:
+    input: source/wordcount.py, data/sierra.txt
+    output: processed_data/sierra.dat
+    log: processed_data/sierra.log
+    jobid: 8
+    wildcards: file=sierra
+
+[Tue Oct 27 10:37:52 2020]
+Finished job 8.
+1 of 5 steps (20%) done
+
+[Tue Oct 27 10:37:52 2020]
+rule zipf_test:
+    input: source/zipf_test.py, processed_data/isles.dat, processed_data/last.dat, processed_data/sierra.dat, processed_data/abyss.dat
+    output: results/results.txt
+    jobid: 10
+
+[Tue Oct 27 10:37:52 2020]
+Finished job 10.
+2 of 5 steps (40%) done
+
+[Tue Oct 27 10:37:52 2020]
+rule make_plot:
+    input: source/plotcount.py, processed_data/sierra.dat
+    output: results/sierra.png
+    jobid: 4
+    wildcards: file=sierra
+
+[Tue Oct 27 10:37:53 2020]
+Finished job 4.
+3 of 5 steps (60%) done
+
+[Tue Oct 27 10:37:53 2020]
+localrule make_archive:
+    input: results/isles.png, results/last.png, results/sierra.png, results/abyss.png, processed_data/isles.dat, processed_data/last.dat, processed_data/sierra.dat, processed_data/abyss.dat, results/results.txt
+    output: zipf_analysis.tar.gz
+    jobid: 1
+
+[Tue Oct 27 10:37:53 2020]
+Finished job 1.
+4 of 5 steps (80%) done
+
+[Tue Oct 27 10:37:53 2020]
+localrule all:
+    input: zipf_analysis.tar.gz
+    jobid: 0
+
+[Tue Oct 27 10:37:53 2020]
+Finished job 0.
+5 of 5 steps (100%) done
+Complete log: /home/brinn/Code/code-refinery-workshop/day4/word-count/.snakemake/log/2020-10-27T103752.307445.snakemake.log

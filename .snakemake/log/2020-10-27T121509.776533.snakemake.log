@@ -1,0 +1,11 @@
+Building DAG of jobs...
+Deleting zipf_analysis.tar.gz
+Deleting results/isles.png
+Deleting results/last.png
+Deleting results/sierra.png
+Deleting results/abyss.png
+Deleting processed_data/isles.dat
+Deleting processed_data/last.dat
+Deleting processed_data/sierra.dat
+Deleting processed_data/abyss.dat
+Deleting results/results.txt
